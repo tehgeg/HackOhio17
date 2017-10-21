@@ -1,6 +1,15 @@
+import java.awt.Dimension;
+
 import javax.swing.JPanel;
 
 public class GamePanel extends JPanel implements Runnable {
+	
+	public GamePanel() {
+		super();
+		setPreferredSize(new Dimension(game.WIDTH, game.HEIGHT));
+		setFocusable(true);
+		requestFocus();
+	}
 
 	final static int platWidth = 200;
 	final static int platLength = 20;
@@ -53,6 +62,8 @@ public class GamePanel extends JPanel implements Runnable {
 		plat7.setDisplacement(displacement);
 	}
 
+	
+	
 	/*
 	 * Updates the position of the platforms
 	 */
@@ -66,4 +77,5 @@ public class GamePanel extends JPanel implements Runnable {
 		plat7.updatePos();
 	}
 }
+
 
