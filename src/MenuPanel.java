@@ -25,15 +25,14 @@ public class MenuPanel extends JPanel implements ActionListener{
 		setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		setFocusable(true);
 		requestFocus();
-		createPanel();
 	}
 	
-	/*public void paintComponent(Graphics g) {
+	public void paintComponent(Graphics g) {
 		int centerPanelX = WIDTH / 2; 
 		int centerPanelY = HEIGHT / 2;
 		JButton button = new JButton("Hello world");
 		// Calculate the starting point for the centered string
-		int strX = centerPanelX - (int)(button.getWidth() / 2); 
+		int strX = centerPanelX - (int)(button.getWidth()/2); 
 		int strY = centerPanelY + (int)(button.getHeight() / 2);
 		button.setBounds(strX , strY , 100 , 30);
 		add(button);
@@ -43,17 +42,8 @@ public class MenuPanel extends JPanel implements ActionListener{
 		add(jp);
 		add(jl);
 		button.addActionListener(this);
-	}*/
-	
-	public void createPanel() {
-		JPanel jp = new JPanel();
-		//System.out.println("Hello");
-		JButton butt = new JButton("Fuck me here");
-		butt.setBounds(0,0,100,30);
-		this.add(butt);
-		//ActionListener al = new ActionListener();
-		//butt.addActionListener(Client.getInstance());
 	}
+	
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
