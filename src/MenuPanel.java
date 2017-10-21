@@ -15,12 +15,10 @@ import java.util.Scanner;
 
 public class MenuPanel extends JPanel implements ActionListener{
 	Scanner in = new Scanner(System.in);
-	public static final int WIDTH = 1280;
-	public static final int HEIGHT = 720;
 	
 	public MenuPanel() {
 		super();
-		setPreferredSize(new Dimension(WIDTH, HEIGHT));
+		setPreferredSize(new Dimension(game.WIDTH, game.HEIGHT));
 		setFocusable(true);
 		requestFocus();
 	}
