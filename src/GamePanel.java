@@ -36,13 +36,13 @@ private Vector2D plat7;
 
 
 public void init() {
-	plat1 = new Vector2D(plat1_InitX, plat1_InitY, game.WIDTH, game.HEIGHT);
-	plat2 = new Vector2D(plat2_InitX, plat2_InitY, game.WIDTH, game.HEIGHT);
-	plat3 = new Vector2D(plat3_InitX, plat3_InitY, game.WIDTH, game.HEIGHT);
-	plat4 = new Vector2D(plat4_InitX, plat4_InitY, game.WIDTH, game.HEIGHT);
-	plat5 = new Vector2D(plat5_InitX, plat5_InitY, game.WIDTH, game.HEIGHT);
-	plat6 = new Vector2D(plat6_InitX, plat6_InitY, game.WIDTH, game.HEIGHT);
-	plat7 = new Vector2D(plat7_InitX, plat7_InitY, game.WIDTH, game.HEIGHT);
+	plat1 = new Vector2D(plat1_InitX, plat1_InitY);
+	plat2 = new Vector2D(plat2_InitX, plat2_InitY);
+	plat3 = new Vector2D(plat3_InitX, plat3_InitY);
+	plat4 = new Vector2D(plat4_InitX, plat4_InitY);
+	plat5 = new Vector2D(plat5_InitX, plat5_InitY);
+	plat6 = new Vector2D(plat6_InitX, plat6_InitY);
+	plat7 = new Vector2D(plat7_InitX, plat7_InitY);
 	Vector2D displacement = new Vector2D(-16, -9);
 	plat1.setDisplacement(displacement);
 	plat2.setDisplacement(displacement);
