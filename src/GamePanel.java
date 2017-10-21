@@ -55,7 +55,6 @@ public void init() {
 	plat7.setDisplacement(displacement);
 }
 
-<<<<<<< HEAD
 public GamePanel() {
 	super();
 	setPreferredSize(new Dimension(game.WIDTH, game.HEIGHT));
@@ -63,10 +62,7 @@ public GamePanel() {
 	requestFocus();
 }
 
-/*
-=======
  /*
->>>>>>> refs/remotes/origin/master
  * Updates the position of the platforms
  */
 public void update() {
