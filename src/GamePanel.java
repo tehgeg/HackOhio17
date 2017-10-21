@@ -26,23 +26,23 @@ final static int plat6_InitY = 5*plat2_InitY;
 final static int plat7_InitX = 6*plat2_InitX;
 final static int plat7_InitY = 6*plat2_InitY;
 	
-private Platform plat1;
-private Platform plat2;
-private Platform plat3;
-private Platform plat4;
-private Platform plat5;
-private Platform plat6;
-private Platform plat7;
+private Vector2D plat1;
+private Vector2D plat2;
+private Vector2D plat3;
+private Vector2D plat4;
+private Vector2D plat5;
+private Vector2D plat6;
+private Vector2D plat7;
 
 
 public void init() {
-	plat1 = new Platform(plat1_InitX, plat1_InitY, game.WIDTH, game.HEIGHT);
-	plat2 = new Platform(plat2_InitX, plat2_InitY, game.WIDTH, game.HEIGHT);
-	plat3 = new Platform(plat3_InitX, plat3_InitY, game.WIDTH, game.HEIGHT);
-	plat4 = new Platform(plat4_InitX, plat4_InitY, game.WIDTH, game.HEIGHT);
-	plat5 = new Platform(plat5_InitX, plat5_InitY, game.WIDTH, game.HEIGHT);
-	plat6 = new Platform(plat6_InitX, plat6_InitY, game.WIDTH, game.HEIGHT);
-	plat7 = new Platform(plat7_InitX, plat7_InitY, game.WIDTH, game.HEIGHT);
+	plat1 = new Vector2D(plat1_InitX, plat1_InitY, game.WIDTH, game.HEIGHT);
+	plat2 = new Vector2D(plat2_InitX, plat2_InitY, game.WIDTH, game.HEIGHT);
+	plat3 = new Vector2D(plat3_InitX, plat3_InitY, game.WIDTH, game.HEIGHT);
+	plat4 = new Vector2D(plat4_InitX, plat4_InitY, game.WIDTH, game.HEIGHT);
+	plat5 = new Vector2D(plat5_InitX, plat5_InitY, game.WIDTH, game.HEIGHT);
+	plat6 = new Vector2D(plat6_InitX, plat6_InitY, game.WIDTH, game.HEIGHT);
+	plat7 = new Vector2D(plat7_InitX, plat7_InitY, game.WIDTH, game.HEIGHT);
 	Vector2D displacement = new Vector2D(-16, -9);
 	plat1.setDisplacement(displacement);
 	plat2.setDisplacement(displacement);
