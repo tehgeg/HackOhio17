@@ -23,10 +23,10 @@ public class game extends JPanel{
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		JFrame window = new JFrame("QuickType"); 
-		JPanel jp = new JPanel();
-		JButton button = new JButton("Hello world");
+		//JPanel jp = new JPanel();
+		//JButton button = new JButton("Hello world");
 		window.setContentPane(new MenuPanel()); 
-		jp.add(button);
+		//jp.add(button);
 		window.setLayout(new BorderLayout());
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 		window.setResizable(false);

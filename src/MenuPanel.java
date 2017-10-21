@@ -3,6 +3,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import com.sun.security.ntlm.Client;
+
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -23,9 +25,10 @@ public class MenuPanel extends JPanel implements ActionListener{
 		setPreferredSize(new Dimension(WIDTH, HEIGHT));
 		setFocusable(true);
 		requestFocus();
+		createPanel();
 	}
 	
-	public void paintComponent(Graphics g) {
+	/*public void paintComponent(Graphics g) {
 		int centerPanelX = WIDTH / 2; 
 		int centerPanelY = HEIGHT / 2;
 		JButton button = new JButton("Hello world");
@@ -40,6 +43,16 @@ public class MenuPanel extends JPanel implements ActionListener{
 		add(jp);
 		add(jl);
 		button.addActionListener(this);
+	}*/
+	
+	public void createPanel() {
+		JPanel jp = new JPanel();
+		//System.out.println("Hello");
+		JButton butt = new JButton("Fuck me here");
+		butt.setBounds(0,0,100,30);
+		this.add(butt);
+		//ActionListener al = new ActionListener();
+		//butt.addActionListener(Client.getInstance());
 	}
 
 	@Override
