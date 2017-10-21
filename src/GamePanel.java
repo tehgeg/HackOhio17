@@ -1,4 +1,6 @@
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
@@ -82,20 +84,7 @@ public class GamePanel extends JPanel implements Runnable {
 		plat6.setDisplacement(displacement);
 		plat7.setDisplacement(displacement);
 	}
-	
 
-	 /*
-	 * Updates the position of the platforms
-	 */
-	public void update() {
-		plat1.updatePos();
-		plat2.updatePos();
-		plat3.updatePos();
-		plat4.updatePos();
-		plat5.updatePos();
-		plat6.updatePos();
-		plat7.updatePos();
-	}
 	
 	@Override
 	public void run() {
@@ -116,6 +105,47 @@ public class GamePanel extends JPanel implements Runnable {
 				}
 				repaint();
 		}
+	}
+	
+	 /*
+	 * Updates the position of game objects.
+	 */
+	public void update() {
+		plat1.updatePos();
+		plat2.updatePos();
+		plat3.updatePos();
+		plat4.updatePos();
+		plat5.updatePos();
+		plat6.updatePos();
+		plat7.updatePos();
+	}
+
+	/*
+	 * Updates game objects.
+	 */
+	public void paintComponent(Graphics2D g) {
+			super.paintComponent(g);
+			if (plat1 != null) {
+				plat1.draw((Graphics2D) g);
+			}
+			if (plat2 != null) {
+				plat2.draw((Graphics2D) g);
+			}
+			if (plat3 != null) {
+				plat3.draw((Graphics2D) g);
+			}
+			if (plat4 != null) {
+				plat4.draw((Graphics2D) g);
+			}
+			if (plat5 != null) {
+				plat5.draw((Graphics2D) g);
+			}
+			if (plat6 != null) {
+				plat6.draw((Graphics2D) g);
+			}
+			if (plat7 != null) {
+				plat7.draw((Graphics2D) g);
+			}
 	}
 	
 
