@@ -11,7 +11,7 @@ public class vector2D {
 	/*
 	 * Constructor for a 2D vector where @i is the x-coordinate and @j is the y-coordinate
 	 */
-	public void vector2D(int i, int j) {
+	public vector2D(int i, int j) {
 		x = i;
 		y = j;
 	}
