@@ -1,4 +1,6 @@
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
@@ -36,7 +38,16 @@ private Platform plat5;
 private Platform plat6;
 private Platform plat7;
 
+public GamePanel() {
+	super();
+	setPreferredSize(new Dimension(game.WIDTH, game.HEIGHT));
+	setFocusable(true);
+	requestFocus();
+}
 
+/*
+ * Initializes game objects.
+ */
 public void init() {
 	plat1 = new Platform(plat1_InitX, plat1_InitY, game.WIDTH, game.HEIGHT);
 	plat2 = new Platform(plat2_InitX, plat2_InitY, game.WIDTH, game.HEIGHT);
@@ -55,15 +66,8 @@ public void init() {
 	plat7.setDisplacement(displacement);
 }
 
-public GamePanel() {
-	super();
-	setPreferredSize(new Dimension(game.WIDTH, game.HEIGHT));
-	setFocusable(true);
-	requestFocus();
-}
-
  /*
- * Updates the position of the platforms
+ * Updates the position of game objects.
  */
 public void update() {
 	plat1.updatePos();
@@ -73,6 +77,34 @@ public void update() {
 	plat5.updatePos();
 	plat6.updatePos();
 	plat7.updatePos();
+}
+
+/*
+ * Updates game objects.
+ */
+public void paintComponent(Graphics2D g) {
+		super.paintComponent(g);
+		if (plat1 != null) {
+			plat1.draw((Graphics2D) g);
+		}
+		if (plat2 != null) {
+			plat2.draw((Graphics2D) g);
+		}
+		if (plat3 != null) {
+			plat3.draw((Graphics2D) g);
+		}
+		if (plat4 != null) {
+			plat4.draw((Graphics2D) g);
+		}
+		if (plat5 != null) {
+			plat5.draw((Graphics2D) g);
+		}
+		if (plat6 != null) {
+			plat6.draw((Graphics2D) g);
+		}
+		if (plat7 != null) {
+			plat7.draw((Graphics2D) g);
+		}
 }
 
 }
