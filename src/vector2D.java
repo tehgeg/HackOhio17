@@ -39,7 +39,6 @@ public class vector2D {
 		return oldX;
 	}
 	
-
 	/*
 	 * Sets the y-coordinate of @this and returns the old y-coordinate
 	 */
