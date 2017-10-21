@@ -1,7 +1,7 @@
 /*
  * Representation of a 2D vector for which game objects (platform/hero) will be positioned at.
  */
-public class vector2D {
+public class Vector2D {
 	/*
 	 * Variables containing the x and y coordinates for some object
 	 */
@@ -11,7 +11,7 @@ public class vector2D {
 	/*
 	 * Constructor for a 2D vector where @i is the x-coordinate and @j is the y-coordinate
 	 */
-	public vector2D(int i, int j) {
+	public Vector2D(int i, int j) {
 		x = i;
 		y = j;
 	}
@@ -51,7 +51,7 @@ public class vector2D {
 	/*
 	 * Adds vector @v2 to @this
 	 */
-	public void add(vector2D v2) {
+	public void add(Vector2D v2) {
 		this.x += v2.getX();
 		this.y += v2.getY();
 	}

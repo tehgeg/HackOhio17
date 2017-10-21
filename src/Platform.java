@@ -5,24 +5,23 @@ import java.awt.Point;
 /*
  * Represents a platform for the hero to stand on.
  */
-public class platform {
+public class Platform {
 	
 	private Point point;
 	
-	private int length;
-	
 	private int width;
 	
-	private vector2D displacement;
+	private int height;
+	
+	private Vector2D displacement;
 	
 	/*
 	 * Constructor for the platform object
 	 */
-	public platform(int x, int y, int length, int width) {
+	public Platform(int x, int y, int width, int height) {
 		point = new Point(x, y);
-		this.length = length;
 		this.width = width;
-		
+		this.height = height;
 	}
 	
 	public int getX() {
@@ -33,7 +32,7 @@ public class platform {
 		return point.y;
 	}
 	
-	public vector2D getDisplacement() {
+	public Vector2D getDisplacement() {
 		return this.displacement;
 	}
 	
@@ -45,7 +44,7 @@ public class platform {
 		point.y = y;
 	}
 	
-	public void setDisplacement(vector2D v) {
+	public void setDisplacement(Vector2D v) {
 		this.displacement = v;
 	}
 	
@@ -56,7 +55,7 @@ public class platform {
 	
 	public void draw(Graphics2D g) {
 		g.setColor(Color.RED);
-		g.fillRect(getX(),getY(), this.length, this.width);
+		g.fillRect(getX(),getY(), this.width, this.height);
 	}
 	
 
