@@ -1,4 +1,3 @@
-
 public class GamePanel {
 
 final static int platWidth = 200;
@@ -51,6 +50,4 @@ public void init() {
 	plat6.setDisplacement(displacement);
 	plat7.setDisplacement(displacement);
 }
-
 }
-
