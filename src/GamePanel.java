@@ -1,4 +1,6 @@
-public class GamePanel {
+import javax.swing.JPanel;
+
+public class GamePanel extends JPanel implements Runnable {
 
 final static int platWidth = 200;
 final static int platLength = 20;
@@ -51,6 +53,17 @@ public void init() {
 	plat7.setDisplacement(displacement);
 }
 
-
+ /*
+ * Updates the position of the platforms
+ */
+public void update() {
+	plat1.updatePos();
+	plat2.updatePos();
+	plat3.updatePos();
+	plat4.updatePos();
+	plat5.updatePos();
+	plat6.updatePos();
+	plat7.updatePos();
+}
 
 }
