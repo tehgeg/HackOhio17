@@ -53,7 +53,7 @@ public void init() {
 	plat7.setDisplacement(displacement);
 }
 
-/*
+ /*
  * Updates the position of the platforms
  */
 public void update() {
@@ -65,4 +65,5 @@ public void update() {
 	plat6.updatePos();
 	plat7.updatePos();
 }
+
 }
