@@ -18,7 +18,7 @@ public class platform {
 	/*
 	 * Constructor for the platform object
 	 */
-	public void platform(int x, int y, int length, int width) {
+	public platform(int x, int y, int length, int width) {
 		point = new Point(x, y);
 		this.length = length;
 		this.width = width;
@@ -33,14 +33,6 @@ public class platform {
 		return point.y;
 	}
 	
-	public int getLength() {
-		return this.length;
-	}
-	
-	public int getWidth() {
-		return this.width;
-	}
-	
 	public vector2D getDisplacement() {
 		return this.displacement;
 	}
@@ -51,14 +43,6 @@ public class platform {
 	
 	public void setY(int y) {
 		point.y = y;
-	}
-	
-	public void setLength(int length) {
-		this.length = length;
-	}
-	
-	public void setWidth(int width) {
-		this.width = width;
 	}
 	
 	public void setDisplacement(vector2D v) {
@@ -72,7 +56,7 @@ public class platform {
 	
 	public void draw(Graphics2D g) {
 		g.setColor(Color.RED);
-		g.fillRect(getX(),getY(), getLength(), getWidth());
+		g.fillRect(getX(),getY(), this.length, this.width);
 	}
 	
 
