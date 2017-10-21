@@ -50,4 +50,7 @@ public void init() {
 	plat6.setDisplacement(displacement);
 	plat7.setDisplacement(displacement);
 }
+
+
+
 }
