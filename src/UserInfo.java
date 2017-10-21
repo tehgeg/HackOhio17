@@ -1,11 +1,11 @@
 //Class for the player of the game
-public class Player {
+public class UserInfo {
 	
 	private int playerScore;
 	private String playerName;
 	
 	//Constructor
-	Player(String name){
+	UserInfo(String name){
 		this.playerScore = 0;
 		this.playerName = name;
 	}
