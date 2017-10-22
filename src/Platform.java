@@ -49,8 +49,13 @@ public class Platform {
 	}
 	
 	public void	updatePos() {
+		if ((point.x == (game.WIDTH-256*6)) && (point.y == (144*6))) {
+			point.x = game.WIDTH;
+			point.y = 0;
+		}
 		point.x += displacement.getX();
 		point.y += displacement.getY();
+		
 	}
 	
 	public void draw(Graphics2D g) {

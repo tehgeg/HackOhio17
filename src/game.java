@@ -22,11 +22,7 @@ public class game extends JPanel{
 	public static final JFrame window = new JFrame("QuickType"); 
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		JPanel jp = new JPanel();
-		JButton button = new JButton("Hello world");
 		window.setContentPane(new MenuPanel()); 
-		jp.add(button);
 		window.setLayout(new BorderLayout());
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 		window.setResizable(false);
@@ -36,10 +32,7 @@ public class game extends JPanel{
 	}
 	
 	public static void changePanelGame() {
-		// JPanel jp = new JPanel();
-		// JButton button = new JButton("Hello world");
 		window.setContentPane(new GamePanel()); 
-		// jp.add(button);
 		window.setLayout(new BorderLayout());
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 		window.setResizable(false);
@@ -49,10 +42,7 @@ public class game extends JPanel{
 	}
 	
 	public static void changePanelMenu() {
-		// JPanel jp = new JPanel();
-		// JButton button = new JButton("Hello world");
 		window.setContentPane(new MenuPanel()); 
-		// jp.add(button);
 		window.setLayout(new BorderLayout());
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 		window.setResizable(false);
