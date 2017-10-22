@@ -67,14 +67,14 @@ private Thread thread;
 	
 	
 	public void init() {
-		plat1 = new Platform(plat1_InitX, plat1_InitY, game.WIDTH, game.HEIGHT);
-		plat2 = new Platform(plat2_InitX, plat2_InitY, game.WIDTH, game.HEIGHT);
-		plat3 = new Platform(plat3_InitX, plat3_InitY, game.WIDTH, game.HEIGHT);
-		plat4 = new Platform(plat4_InitX, plat4_InitY, game.WIDTH, game.HEIGHT);
-		plat5 = new Platform(plat5_InitX, plat5_InitY, game.WIDTH, game.HEIGHT);
-		plat6 = new Platform(plat6_InitX, plat6_InitY, game.WIDTH, game.HEIGHT);
-		plat7 = new Platform(plat7_InitX, plat7_InitY, game.WIDTH, game.HEIGHT);
-		Vector2D displacement = new Vector2D(-16, -9);
+		plat1 = new Platform(plat1_InitX, plat1_InitY, platWidth, platLength);
+		plat2 = new Platform(plat2_InitX, plat2_InitY, platWidth, platLength);
+		plat3 = new Platform(plat3_InitX, plat3_InitY, platWidth, platLength);
+		plat4 = new Platform(plat4_InitX, plat4_InitY, platWidth, platLength);
+		plat5 = new Platform(plat5_InitX, plat5_InitY, platWidth, platLength);
+		plat6 = new Platform(plat6_InitX, plat6_InitY, platWidth, platLength);
+		plat7 = new Platform(plat7_InitX, plat7_InitY, platWidth, platLength);
+		Vector2D displacement = new Vector2D(-16, 9);
 		plat1.setDisplacement(displacement);
 		plat2.setDisplacement(displacement);
 		plat3.setDisplacement(displacement);
@@ -124,7 +124,7 @@ private Thread thread;
 	/*
 	 * Updates game objects.
 	 */
-	public void paintComponent(Graphics2D g) {
+	public void paintComponent(Graphics g) {
 			super.paintComponent(g);
 			if (plat1 != null) {
 				plat1.draw((Graphics2D) g);
