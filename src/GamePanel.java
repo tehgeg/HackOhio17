@@ -6,33 +6,55 @@ import javax.swing.JPanel;
 
 public class GamePanel extends JPanel implements Runnable {
 	
+
 	private static final long serialVersionUID = 1L;
-	
-	char[] arr = RandomChars.generateFull(10000);
-	private static int index = 0;
-	
 	final static int platWidth = 200;
 	final static int platLength = 20;
+	final static int x_inc = 288;
+	final static int y_inc = 144;
+
+	final static int plat1_InitX = game.WIDTH-x_inc*5;
+	final static int plat1_InitY = y_inc*5;
+
 	
-	final static int plat1_InitX = game.WIDTH-256*6;
-	final static int plat1_InitY = 144*6;
-	final static int plat2_InitX = game.WIDTH-256*5;
-	final static int plat2_InitY = 144*5;
+	final static int plat2_InitX = game.WIDTH-x_inc*4;
+	final static int plat2_InitY = y_inc*4;
 	
-	final static int plat3_InitX = game.WIDTH-256*4;
-	final static int plat3_InitY = 144*4;
+	final static int plat3_InitX = game.WIDTH-x_inc*3;
+	final static int plat3_InitY = y_inc*3;
 	
-	final static int plat4_InitX = game.WIDTH-256*3;
-	final static int plat4_InitY = 144*3;
+	final static int plat4_InitX = game.WIDTH-x_inc*2;
+	final static int plat4_InitY = y_inc*2;
 	
-	final static int plat5_InitX = game.WIDTH-256*2;
-	final static int plat5_InitY = 144*2;
+	final static int plat5_InitX = game.WIDTH-x_inc*1;
+	final static int plat5_InitY = y_inc*1;
 		
-	final static int plat6_InitX = game.WIDTH-256;
-	final static int plat6_InitY = 144;
+	final static int plat6_InitX = game.WIDTH-x_inc*0;
+	final static int plat6_InitY = y_inc*0;
 	
-	final static int plat7_InitX = game.WIDTH;
-	final static int plat7_InitY = 0;
+	final static int plat7_InitX = game.WIDTH-x_inc*-1;
+	final static int plat7_InitY = y_inc*-1;
+	
+	
+	char[] arr = RandomChars.generateFull(100000);
+	private static int index = 7;
+
+	private Thread thread;
+	
+	private boolean running;
+	
+	private int FPS = 60;
+	
+	private long targetTime = 1000 / FPS;
+
+	
+	public GamePanel() {
+		super();
+		setPreferredSize(new Dimension(game.WIDTH, game.HEIGHT));
+		setFocusable(true);
+		requestFocus();
+	}
+
 		
 	private Platform plat1;
 	private Platform plat2;
@@ -41,22 +63,7 @@ public class GamePanel extends JPanel implements Runnable {
 	private Platform plat5;
 	private Platform plat6;
 	private Platform plat7;
-	
-	
-	private Thread thread;
-	
-	private boolean running;
-	
-	private int FPS = 60;
-	
-	private long targetTime = 1000 / FPS;
-	
-	public GamePanel() {
-		super();
-		setPreferredSize(new Dimension(game.WIDTH, game.HEIGHT));
-		setFocusable(true);
-		requestFocus();
-	}
+
 	
 	public void addNotify() {
 		super.addNotify();
@@ -70,6 +77,7 @@ public class GamePanel extends JPanel implements Runnable {
 	
 	
 	public void init() {
+
 		plat1 = new Platform(plat1_InitX, plat1_InitY, platWidth, platLength, Character.toString(arr[0]));
 		plat2 = new Platform(plat2_InitX, plat2_InitY, platWidth, platLength, Character.toString(arr[1]));
 		plat3 = new Platform(plat3_InitX, plat3_InitY, platWidth, platLength, Character.toString(arr[2]));
@@ -77,7 +85,8 @@ public class GamePanel extends JPanel implements Runnable {
 		plat5 = new Platform(plat5_InitX, plat5_InitY, platWidth, platLength, Character.toString(arr[4]));
 		plat6 = new Platform(plat6_InitX, plat6_InitY, platWidth, platLength, Character.toString(arr[5]));
 		plat7 = new Platform(plat7_InitX, plat7_InitY, platWidth, platLength, Character.toString(arr[6]));
-		Vector2D displacement = new Vector2D(-16, 9);
+		Vector2D displacement = new Vector2D(-2, 1);
+
 		plat1.setDisplacement(displacement);
 		plat2.setDisplacement(displacement);
 		plat3.setDisplacement(displacement);
@@ -86,6 +95,7 @@ public class GamePanel extends JPanel implements Runnable {
 		plat6.setDisplacement(displacement);
 		plat7.setDisplacement(displacement);
 	}
+
 
 	
 	@Override
@@ -107,10 +117,9 @@ public class GamePanel extends JPanel implements Runnable {
 				}
 				repaint();
 		}
-	}
-	
-	 /*
-	 * Updates the position of game objects.
+	}	
+	/*
+	 * Updates the position of the platforms
 	 */
 	public void update() {
 		boolean inc = plat1.updatePos(index, arr);
@@ -143,6 +152,8 @@ public class GamePanel extends JPanel implements Runnable {
 		}
 	}
 
+
+
 	/*
 	 * Updates game objects.
 	 */
@@ -174,3 +185,4 @@ public class GamePanel extends JPanel implements Runnable {
 	
 
 }
+

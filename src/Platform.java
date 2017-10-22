@@ -57,10 +57,11 @@ public class Platform {
 	
 	public boolean updatePos(int index, char[] arr) {
 		boolean offScreen = false;
-		if ((point.x == (game.WIDTH-256*6)) && (point.y == (144*6))) {
-			point.x = game.WIDTH;
-			point.y = 0;
+		if((point.x == (game.WIDTH-288*6)) && (point.y == (144*6))) {
+			point.x = game.WIDTH + 288;
+			point.y = -144;
 			this.setChar(Character.toString(arr[index]));
+			System.out.println(this.getChar());
 			offScreen = true;
 		}
 		point.x += displacement.getX();
@@ -84,5 +85,4 @@ public class Platform {
 		this.character = character;
 	}
 	
-
 }

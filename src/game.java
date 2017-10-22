@@ -41,6 +41,26 @@ public class game extends JPanel{
 		window.setVisible(true);
 	}
 	
+	public static void changePanelGameLeft() {
+		window.setContentPane(new GamePanelLeft()); 
+		window.setLayout(new BorderLayout());
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+		window.setResizable(false);
+		window.pack();
+		window.setLocationRelativeTo(null); 
+		window.setVisible(true);
+	}
+	
+	public static void changePanelGameRight() {
+		window.setContentPane(new GamePanelRight()); 
+		window.setLayout(new BorderLayout());
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+		window.setResizable(false);
+		window.pack();
+		window.setLocationRelativeTo(null); 
+		window.setVisible(true);
+	}
+	
 	public static void changePanelMenu() {
 		window.setContentPane(new MenuPanel()); 
 		window.setLayout(new BorderLayout());
