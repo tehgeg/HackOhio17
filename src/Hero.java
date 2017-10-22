@@ -11,7 +11,7 @@ public class Hero {
 	private Point point;
 	
 	private Vector2D displacement;
-	private Vector2D jumpDisplacement = new Vector2D(24,-12);
+	private Vector2D jumpDisplacement = new Vector2D(8,-4);
 	private int jumpTicks = 0;
 	static boolean jump;
 	
@@ -61,7 +61,7 @@ public class Hero {
 			point.x += displacement.getX() + jumpDisplacement.getX();
 			point.y += displacement.getY() + jumpDisplacement.getY();
 			jumpTicks++;
-			if (jumpTicks == 12) {
+			if (jumpTicks == 36) {
 				jumpTicks = 0;
 				jump = false;
 			}
