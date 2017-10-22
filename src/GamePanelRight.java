@@ -10,7 +10,7 @@ import javax.swing.JPanel;
 
 public class GamePanelRight extends JPanel implements Runnable {
 	
-private Thread thread;
+	private Thread thread;
 	
 	private boolean running;
 	
@@ -18,25 +18,16 @@ private Thread thread;
 	
 	private long targetTime;
 	
-	//targetTime = time/FPS;
-	
-	public GamePanelRight(int time) {
-		super();
-		setPreferredSize(new Dimension(game.WIDTH, game.HEIGHT));
-		setFocusable(true);
-		requestFocus();
-		this.targetTime = time/FPS;
-	}
 	private static final long serialVersionUID = 1L;
 
 	final static int platWidth = 200;
 	final static int platLength = 20;
-	
 	final static int x_inc = 288;
 	final static int y_inc = 144;
-	
+
 	final static int plat1_InitX = game.WIDTH-x_inc*5;
 	final static int plat1_InitY = y_inc*5;
+
 	
 	final static int plat2_InitX = game.WIDTH-x_inc*4;
 	final static int plat2_InitY = y_inc*4;
@@ -56,7 +47,10 @@ private Thread thread;
 	final static int plat7_InitX = game.WIDTH-x_inc*-1;
 	final static int plat7_InitY = y_inc*-1;
 	
-		
+	
+	char[] arr = RandomChars.generateRight(1000000);
+	private static int index = 1;
+
 	private Platform plat1;
 	private Platform plat2;
 	private Platform plat3;
@@ -65,6 +59,14 @@ private Thread thread;
 	private Platform plat6;
 	private Platform plat7;
 
+	
+	public GamePanelRight(int time) {
+		super();
+		setPreferredSize(new Dimension(game.WIDTH, game.HEIGHT));
+		setFocusable(true);
+		requestFocus();
+		this.targetTime = time/FPS;
+	}
 	
 	public void addNotify() {
 		super.addNotify();
@@ -78,14 +80,16 @@ private Thread thread;
 	
 	
 	public void init() {
-		plat1 = new Platform(plat1_InitX, plat1_InitY, platWidth, platLength);
-		plat2 = new Platform(plat2_InitX, plat2_InitY, platWidth, platLength);
-		plat3 = new Platform(plat3_InitX, plat3_InitY, platWidth, platLength);
-		plat4 = new Platform(plat4_InitX, plat4_InitY, platWidth, platLength);
-		plat5 = new Platform(plat5_InitX, plat5_InitY, platWidth, platLength);
-		plat6 = new Platform(plat6_InitX, plat6_InitY, platWidth, platLength);
-		plat7 = new Platform(plat7_InitX, plat7_InitY, platWidth, platLength);
+
+		plat1 = new Platform(plat1_InitX, plat1_InitY, platWidth, platLength, "");
+		plat2 = new Platform(plat2_InitX, plat2_InitY, platWidth, platLength, "");
+		plat3 = new Platform(plat3_InitX, plat3_InitY, platWidth, platLength, "");
+		plat4 = new Platform(plat4_InitX, plat4_InitY, platWidth, platLength, "");
+		plat5 = new Platform(plat5_InitX, plat5_InitY, platWidth, platLength, "");
+		plat6 = new Platform(plat6_InitX, plat6_InitY, platWidth, platLength, "");
+		plat7 = new Platform(plat7_InitX, plat7_InitY, platWidth, platLength, Character.toString(arr[0]));
 		Vector2D displacement = new Vector2D(-2, 1);
+
 		plat1.setDisplacement(displacement);
 		plat2.setDisplacement(displacement);
 		plat3.setDisplacement(displacement);
@@ -121,13 +125,34 @@ private Thread thread;
 	 * Updates the position of the platforms
 	 */
 	public void update() {
-		plat1.updatePos();
-		plat2.updatePos();
-		plat3.updatePos();
-		plat4.updatePos();
-		plat5.updatePos();
-		plat6.updatePos();
-		plat7.updatePos();
+		boolean inc = plat1.updatePos(index, arr);
+		if(inc) {
+			index++;
+		}
+		boolean inc2 = plat2.updatePos(index, arr);
+		if(inc2) {
+			index++;
+		}
+		boolean inc3 = plat3.updatePos(index, arr);
+		if(inc3) {
+			index++;
+		}
+		boolean inc4 = plat4.updatePos(index, arr);
+		if(inc4) {
+			index++;
+		}
+		boolean inc5 = plat5.updatePos(index, arr);
+		if(inc5) {
+			index++;
+		}
+		boolean inc6 = plat6.updatePos(index, arr);
+		if(inc6) {
+			index++;
+		}
+		boolean inc7 = plat7.updatePos(index, arr);
+		if(inc7) {
+			index++;
+		}
 	}
 
 
@@ -140,7 +165,7 @@ private Thread thread;
 			super.paintComponent(g);
 			BufferedImage img = null;
 			try {
-				img = ImageIO.read(new File("/Users/chiriac/Downloads/clear_blue_sky_panorama-wallpaper-1280x720.jpg"));
+				img = ImageIO.read(new File("src/images/clear_blue_sky_panorama-wallpaper-1280x720.jpg"));
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

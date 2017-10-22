@@ -48,7 +48,7 @@ public class DifficultyPanel extends JPanel implements ActionListener{
 		//Add image to the background for aestheticness
 		BufferedImage img = null;
 		try {
-			img = ImageIO.read(new File("/Users/chiriac/Downloads/clear_blue_sky_panorama-wallpaper-1280x720.jpg"));
+			img = ImageIO.read(new File("src/images/clear_blue_sky_panorama-wallpaper-1280x720.jpg"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
