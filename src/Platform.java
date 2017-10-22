@@ -73,7 +73,9 @@ public class Platform {
 		g.setColor(Color.RED);
 		g.fillRect(getX(),getY(), this.width, this.height);
 		g.setColor(Color.BLACK);
-		g.drawString(this.getChar(), getX() + 90, getY() - 10);	
+		if(this.getChar().length() > 0) {
+			g.drawString(this.getChar(), getX() + 90, getY() - 10);	
+		}
 	}
 	
 	public String getChar() {
