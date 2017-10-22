@@ -12,7 +12,7 @@ private Thread thread;
 	
 	private int FPS = 60;
 	
-	private long targetTime = 1000 / FPS;
+	private long targetTime = 400 / FPS;
 	
 	public GamePanel() {
 		super();
