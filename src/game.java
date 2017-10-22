@@ -24,7 +24,6 @@ public class game extends JPanel{
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		window.setContentPane(new MenuPanel()); 
-		//jp.add(button);
 		window.setLayout(new BorderLayout());
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 		window.setResizable(false);
