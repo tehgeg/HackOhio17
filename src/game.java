@@ -31,28 +31,8 @@ public class game extends JPanel{
 		window.setVisible(true);
 	}
 	
-	public static void changePanelGame() {
-		window.setContentPane(new GamePanel()); 
-		window.setLayout(new BorderLayout());
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
-		window.setResizable(false);
-		window.pack();
-		window.setLocationRelativeTo(null); 
-		window.setVisible(true);
-	}
-	
-	public static void changePanelGameLeft() {
-		window.setContentPane(new GamePanelLeft()); 
-		window.setLayout(new BorderLayout());
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
-		window.setResizable(false);
-		window.pack();
-		window.setLocationRelativeTo(null); 
-		window.setVisible(true);
-	}
-	
-	public static void changePanelGameRight() {
-		window.setContentPane(new GamePanelRight()); 
+	public static void changePanelGame(int time) {
+		window.setContentPane(new GamePanel(time)); 
 		window.setLayout(new BorderLayout());
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 		window.setResizable(false);
@@ -63,6 +43,24 @@ public class game extends JPanel{
 	
 	public static void changePanelMenu() {
 		window.setContentPane(new MenuPanel()); 
+		window.setLayout(new BorderLayout());
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+		window.setResizable(false);
+		window.pack();
+		window.setLocationRelativeTo(null); 
+		window.setVisible(true);
+	}
+	
+	public static void changeDifficulty(String diff) {
+		if(diff.equals("easy")) {
+			window.setContentPane(new DifficultyPanel()); 
+		}
+		else if(diff.equals("medium")){
+			window.setContentPane(new DifficultyPanel()); 
+		}
+		else if(diff.equals("hard")) {
+			window.setContentPane(new DifficultyPanel()); 
+		}
 		window.setLayout(new BorderLayout());
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 		window.setResizable(false);

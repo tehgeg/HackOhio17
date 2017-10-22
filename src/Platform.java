@@ -61,7 +61,6 @@ public class Platform {
 			point.x = game.WIDTH + 288;
 			point.y = -144;
 			this.setChar(Character.toString(arr[index]));
-			System.out.println(this.getChar());
 			offScreen = true;
 		}
 		point.x += displacement.getX();

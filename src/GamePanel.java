@@ -1,13 +1,25 @@
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 public class GamePanel extends JPanel implements Runnable {
 	
-
+	private Thread thread;
+	
+	private boolean running;
+	
+	private int FPS = 60;
+	
+	private long targetTime;
+	
 	private static final long serialVersionUID = 1L;
+
 	final static int platWidth = 200;
 	final static int platLength = 20;
 	final static int x_inc = 288;
@@ -39,23 +51,6 @@ public class GamePanel extends JPanel implements Runnable {
 	char[] arr = RandomChars.generateFull(100000);
 	private static int index = 7;
 
-	private Thread thread;
-	
-	private boolean running;
-	
-	private int FPS = 60;
-	
-	private long targetTime = 1000 / FPS;
-
-	
-	public GamePanel() {
-		super();
-		setPreferredSize(new Dimension(game.WIDTH, game.HEIGHT));
-		setFocusable(true);
-		requestFocus();
-	}
-
-		
 	private Platform plat1;
 	private Platform plat2;
 	private Platform plat3;
@@ -64,6 +59,14 @@ public class GamePanel extends JPanel implements Runnable {
 	private Platform plat6;
 	private Platform plat7;
 
+	
+	public GamePanel(int time) {
+		super();
+		setPreferredSize(new Dimension(game.WIDTH, game.HEIGHT));
+		setFocusable(true);
+		requestFocus();
+		this.targetTime = time/FPS;
+	}
 	
 	public void addNotify() {
 		super.addNotify();
@@ -160,6 +163,14 @@ public class GamePanel extends JPanel implements Runnable {
 	@Override
 	public void paintComponent(Graphics g) {
 			super.paintComponent(g);
+			BufferedImage img = null;
+			try {
+				img = ImageIO.read(new File("src/images/clear_blue_sky_panorama-wallpaper-1280x720.jpg"));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			g.drawImage(img, 0, 0, null);
 			if (plat1 != null) {
 				plat1.draw((Graphics2D) g);
 			}
