@@ -44,7 +44,7 @@ public class Platform{
 	}
 	
 	public void	updatePos() {
-		if((point.x == (game.WIDTH-256*6)) && (point.y == (144*6))) {
+		if((point.x == (game.WIDTH-288*6)) && (point.y == (144*6))) {
 			point.x = game.WIDTH;
 			point.y = 0;
 		}
