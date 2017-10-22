@@ -72,13 +72,13 @@ public class MenuPanel extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource() == left_button) {
-			game.changePanelGame();
+			game.changePanelGameLeft();
 		}
 		else if(e.getSource() == full_button) {
 			game.changePanelGame();
 		}
 		else if(e.getSource() == right_button) {
-			game.changePanelGame();
+			game.changePanelGameRight();
 		}
 		else {
 			System.out.println("Button Error! Close the game and try again.");
