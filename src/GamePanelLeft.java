@@ -49,7 +49,7 @@ public class GamePanelLeft extends JPanel implements Runnable {
 	
 	
 	char[] arr = RandomChars.generateLeft(1000000);
-	private static int index = 1;
+	private static int index = 3;
 
 	private Platform plat1;
 	private Platform plat2;
@@ -85,8 +85,8 @@ public class GamePanelLeft extends JPanel implements Runnable {
 		plat2 = new Platform(plat2_InitX, plat2_InitY, platWidth, platLength, "");
 		plat3 = new Platform(plat3_InitX, plat3_InitY, platWidth, platLength, "");
 		plat4 = new Platform(plat4_InitX, plat4_InitY, platWidth, platLength, "");
-		plat5 = new Platform(plat5_InitX, plat5_InitY, platWidth, platLength, "");
-		plat6 = new Platform(plat6_InitX, plat6_InitY, platWidth, platLength, "");
+		plat5 = new Platform(plat5_InitX, plat5_InitY, platWidth, platLength, Character.toString(arr[2]));
+		plat6 = new Platform(plat6_InitX, plat6_InitY, platWidth, platLength, Character.toString(arr[1]));
 		plat7 = new Platform(plat7_InitX, plat7_InitY, platWidth, platLength, Character.toString(arr[0]));
 		Vector2D displacement = new Vector2D(-2, 1);
 

@@ -42,7 +42,6 @@ public class DifficultyPanel extends JPanel implements ActionListener{
 	}
 	
 	public void paintComponent(Graphics g) {
-		System.out.println("Testing");
 		//Call paintComponent of the parent, not MenuPanel
 		super.paintComponent(g);
 		//Add image to the background for aestheticness

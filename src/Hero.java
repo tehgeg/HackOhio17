@@ -21,7 +21,7 @@ public class Hero {
 	 */
 	public Hero(int x, int y) {
 		point = new Point(x, y);
-		jump = false;
+		jump = true;
 	}
 	
 	public int getX() {
