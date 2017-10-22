@@ -47,6 +47,9 @@ public class GamePanel extends JPanel implements Runnable {
 	final static int plat7_InitX = game.WIDTH-x_inc*-1;
 	final static int plat7_InitY = y_inc*-1;
 	
+	final static int hero_InitX = plat4_InitX + 70;
+	final static int hero_InitY = plat4_InitY - 92;
+	
 	
 	char[] arr = RandomChars.generateFull(1000000);
 	private static int index = 1;
@@ -58,6 +61,7 @@ public class GamePanel extends JPanel implements Runnable {
 	private Platform plat5;
 	private Platform plat6;
 	private Platform plat7;
+	private Hero hero;
 
 	
 	public GamePanel(int time) {
@@ -88,6 +92,8 @@ public class GamePanel extends JPanel implements Runnable {
 		plat5 = new Platform(plat5_InitX, plat5_InitY, platWidth, platLength, "");
 		plat6 = new Platform(plat6_InitX, plat6_InitY, platWidth, platLength, "");
 		plat7 = new Platform(plat7_InitX, plat7_InitY, platWidth, platLength, Character.toString(arr[0]));
+		hero = new Hero(hero_InitX, hero_InitY);
+		
 		Vector2D displacement = new Vector2D(-2, 1);
 
 		plat1.setDisplacement(displacement);
@@ -97,6 +103,7 @@ public class GamePanel extends JPanel implements Runnable {
 		plat5.setDisplacement(displacement);
 		plat6.setDisplacement(displacement);
 		plat7.setDisplacement(displacement);
+		hero.setDisplacement(displacement);
 	}
 
 
@@ -153,6 +160,10 @@ public class GamePanel extends JPanel implements Runnable {
 		if(inc7) {
 			index++;
 		}
+		boolean heroBool = hero.updatePos();
+		if (heroBool) {
+			System.out.print("GAME OVER");
+		}
 	}
 
 
@@ -191,6 +202,9 @@ public class GamePanel extends JPanel implements Runnable {
 			}
 			if (plat7 != null) {
 				plat7.draw((Graphics2D) g);
+			}
+			if (hero != null) {
+				hero.draw((Graphics2D) g);
 			}
 	}
 	

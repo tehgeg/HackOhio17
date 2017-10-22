@@ -2,6 +2,11 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Point;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 /*
  * Represents a platform for the hero to stand on.
@@ -69,9 +74,14 @@ public class Platform {
 	}
 	
 	public void draw(Graphics2D g) {
+		BufferedImage img = null;
+		try {
+			img = ImageIO.read(new File("src/images/SkyScraper2.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		g.drawImage(img, getX(), getY(), null);
 		g.setFont (myFont);
-		g.setColor(Color.RED);
-		g.fillRect(getX(),getY(), this.width, this.height);
 		g.setColor(Color.BLACK);
 		if(this.getChar().length() > 0) {
 			g.drawString(this.getChar(), getX() + 90, getY() - 10);	
