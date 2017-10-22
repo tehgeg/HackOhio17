@@ -1,9 +1,11 @@
 import javax.imageio.ImageIO;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,18 +37,24 @@ public class MenuPanel extends JPanel implements ActionListener{
 	}
 	
 	public void paintComponent(Graphics g) {
-		//Call paintComponent of the parent, not MenuPanel
+		//JLabel for the title
+		JLabel jlabel = new JLabel("Welcome to the Game of QuickType!");
+	    jlabel.setFont(new Font("Verdana",1,30));
+	    jlabel.setBounds(333,100,613,200);
+	    add(jlabel);
+	    
 		super.paintComponent(g);
 		//Add image to the background for aestheticness
 		BufferedImage img = null;
 		try {
-			img = ImageIO.read(new File("/Users/chiriac/Downloads/clear_blue_sky_panorama-wallpaper-1280x720.jpg"));
+			img = ImageIO.read(new File("src/images/clear_blue_sky_panorama-wallpaper-1280x720.jpg"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		g.drawImage(img, 0, 0, null);
 			
+		
 		//Set bounds with manual numbers, just easier than figuring out why it was not aligned
 		left_button.setBounds(355, 390, 150, 30);
 		full_button.setBounds(565 , 390 , 150 , 30);
@@ -72,13 +80,13 @@ public class MenuPanel extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		if(e.getSource() == left_button) {
-			game.changePanelGameLeft();
+			game.changeDifficulty("left");
 		}
 		else if(e.getSource() == full_button) {
-			game.changePanelGame();
+			game.changeDifficulty("full");
 		}
 		else if(e.getSource() == right_button) {
-			game.changePanelGameRight();
+			game.changeDifficulty("right");
 		}
 		else {
 			System.out.println("Button Error! Close the game and try again.");

@@ -31,8 +31,17 @@ public class game extends JPanel{
 		window.setVisible(true);
 	}
 	
-	public static void changePanelGame() {
-		window.setContentPane(new GamePanel()); 
+	public static void changePanelGame(int time, String side) {
+		if(side.equals("left")) {
+			window.setContentPane(new GamePanelLeft(time));
+		}
+		else if(side.equals("full")) {
+			window.setContentPane(new GamePanel(time));
+		}
+		else if(side.equals("right")){
+			window.setContentPane(new GamePanelRight(time));
+		}
+		//window.setContentPane(new GamePanel(time)); 
 		window.setLayout(new BorderLayout());
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 		window.setResizable(false);
@@ -41,28 +50,28 @@ public class game extends JPanel{
 		window.setVisible(true);
 	}
 	
-	public static void changePanelGameLeft() {
-		window.setContentPane(new GamePanelLeft()); 
-		window.setLayout(new BorderLayout());
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
-		window.setResizable(false);
-		window.pack();
-		window.setLocationRelativeTo(null); 
-		window.setVisible(true);
-	}
 	
-	public static void changePanelGameRight() {
-		window.setContentPane(new GamePanelRight()); 
-		window.setLayout(new BorderLayout());
-		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
-		window.setResizable(false);
-		window.pack();
-		window.setLocationRelativeTo(null); 
-		window.setVisible(true);
-	}
 	
 	public static void changePanelMenu() {
 		window.setContentPane(new MenuPanel()); 
+		window.setLayout(new BorderLayout());
+		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
+		window.setResizable(false);
+		window.pack();
+		window.setLocationRelativeTo(null); 
+		window.setVisible(true);
+	}
+	
+	public static void changeDifficulty(String diff) {
+		if(diff.equals("left")) {
+			window.setContentPane(new DifficultyPanel(diff)); 
+		}
+		else if(diff.equals("full")){
+			window.setContentPane(new DifficultyPanel(diff)); 
+		}
+		else if(diff.equals("right")) {
+			window.setContentPane(new DifficultyPanel(diff)); 
+		}
 		window.setLayout(new BorderLayout());
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 		window.setResizable(false);
