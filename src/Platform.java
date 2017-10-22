@@ -1,8 +1,9 @@
+
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Point;
 
-public class Platform {
+public class Platform{
 
 	private Point point;
 	private int width;
