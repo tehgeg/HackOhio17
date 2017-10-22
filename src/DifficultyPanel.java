@@ -1,7 +1,3 @@
-import javax.imageio.ImageIO;
-import javax.swing.JButton;
-import javax.swing.JPanel;
-
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -10,20 +6,30 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.Scanner;
 
-public class MenuPanel extends JPanel implements ActionListener{
-	Scanner in = new Scanner(System.in);
+import javax.imageio.ImageIO;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+
+public class DifficultyPanel extends JPanel implements ActionListener{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	//Width and height of the window
 	public static final int WIDTH = 1280;
 	public static final int HEIGHT = 720;
 	
-	//Initialization of the buttons
-	public static JButton left_button = new JButton("Left Half");
-	public static JButton full_button = new JButton("Full Keyboard");
-	public static JButton right_button = new JButton("Right Half");
+	private static String side;
 	
-	public MenuPanel() {
+	//Initialization of the buttons
+	public static JButton easy_button = new JButton("Easy");
+	public static JButton medium_button = new JButton("Medium");
+	public static JButton hard_button = new JButton("Hard");
+		
+	
+	public DifficultyPanel() {
 		//Usually done for us
 		super();
 		//Set the dimensions
@@ -35,6 +41,7 @@ public class MenuPanel extends JPanel implements ActionListener{
 	}
 	
 	public void paintComponent(Graphics g) {
+		System.out.println("Testing");
 		//Call paintComponent of the parent, not MenuPanel
 		super.paintComponent(g);
 		//Add image to the background for aestheticness
@@ -48,40 +55,40 @@ public class MenuPanel extends JPanel implements ActionListener{
 		g.drawImage(img, 0, 0, null);
 			
 		//Set bounds with manual numbers, just easier than figuring out why it was not aligned
-		left_button.setBounds(355, 390, 150, 30);
-		full_button.setBounds(565 , 390 , 150 , 30);
-		right_button.setBounds(775, 390, 150, 30);
+		easy_button.setBounds(355, 390, 150, 30);
+		medium_button.setBounds(565 , 390 , 150 , 30);
+		hard_button.setBounds(775, 390, 150, 30);
 		
 		//Add the buttons to the panel
-		add(left_button);
-		add(full_button);
-		add(right_button);
+		add(easy_button);
+		add(medium_button);
+		add(hard_button);
 		
 		JPanel jp = new JPanel();
 		jp.setLayout(new BorderLayout());
 		add(jp);
 		
 		//invokes the actionPerformed method
-		left_button.addActionListener(this);
-		full_button.addActionListener(this);
-		right_button.addActionListener(this);		
+		easy_button.addActionListener(this);
+		medium_button.addActionListener(this);
+		hard_button.addActionListener(this);	
 	}
-	
+		
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			if(e.getSource() == easy_button) {
+				game.changePanelGame(1200);
+			}
+			else if(e.getSource() == medium_button) {
+				game.changePanelGame(800);
+			}
+			else if(e.getSource() == hard_button) {
+				game.changePanelGame(400);
+			}
+			else {
+				System.out.println("Button Error! Close the game and try again.");
+			}
+		}
+	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		if(e.getSource() == left_button) {
-			game.changeDifficulty("easy");
-		}
-		else if(e.getSource() == full_button) {
-			game.changeDifficulty("medium");
-		}
-		else if(e.getSource() == right_button) {
-			game.changeDifficulty("hard");
-		}
-		else {
-			System.out.println("Button Error! Close the game and try again.");
-		}
-	}
-}

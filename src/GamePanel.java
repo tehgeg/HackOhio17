@@ -1,7 +1,11 @@
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 public class GamePanel extends JPanel implements Runnable {
@@ -12,13 +16,16 @@ private Thread thread;
 	
 	private int FPS = 60;
 	
-	private long targetTime = 1000 / FPS;
+	private long targetTime;
 	
-	public GamePanel() {
+	//targetTime = time/FPS;
+	
+	public GamePanel(int time) {
 		super();
 		setPreferredSize(new Dimension(game.WIDTH, game.HEIGHT));
 		setFocusable(true);
 		requestFocus();
+		this.targetTime = time/FPS;
 	}
 	private static final long serialVersionUID = 1L;
 
@@ -127,6 +134,14 @@ private Thread thread;
 	@Override
 	public void paintComponent(Graphics g) {
 			super.paintComponent(g);
+			BufferedImage img = null;
+			try {
+				img = ImageIO.read(new File("/Users/chiriac/Downloads/clear_blue_sky_panorama-wallpaper-1280x720.jpg"));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			g.drawImage(img, 0, 0, null);
 			if (plat1 != null) {
 				plat1.draw((Graphics2D) g);
 			}
