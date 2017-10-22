@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Point;
 
@@ -6,6 +7,8 @@ import java.awt.Point;
  * Represents a platform for the hero to stand on.
  */
 public class Platform {
+	
+	private static Font myFont = new Font ("Courier New", 1, 48);
 	
 	private Point point;
 	
@@ -15,13 +18,17 @@ public class Platform {
 	
 	private Vector2D displacement;
 	
+	private String character;
+
+	
 	/*
 	 * Constructor for the platform object
 	 */
-	public Platform(int x, int y, int width, int height) {
+	public Platform(int x, int y, int width, int height, String character) {
 		point = new Point(x, y);
 		this.width = width;
 		this.height = height;
+		this.character = character;
 	}
 	
 	public int getX() {
@@ -48,19 +55,33 @@ public class Platform {
 		this.displacement = v;
 	}
 	
-	public void	updatePos() {
+	public boolean updatePos(int index, char[] arr) {
+		boolean offScreen = false;
 		if ((point.x == (game.WIDTH-256*6)) && (point.y == (144*6))) {
 			point.x = game.WIDTH;
 			point.y = 0;
+			this.setChar(Character.toString(arr[index]));
+			offScreen = true;
 		}
 		point.x += displacement.getX();
 		point.y += displacement.getY();
-		
+		return offScreen;
 	}
 	
 	public void draw(Graphics2D g) {
+		g.setFont (myFont);
 		g.setColor(Color.RED);
 		g.fillRect(getX(),getY(), this.width, this.height);
+		g.setColor(Color.BLACK);
+		g.drawString(this.getChar(), getX() + 90, getY() - 10);	
+	}
+	
+	public String getChar() {
+		return this.character;
+	}
+	
+	public void setChar(String character) {
+		this.character = character;
 	}
 	
 
