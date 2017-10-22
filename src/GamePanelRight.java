@@ -1,7 +1,11 @@
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 public class GamePanelRight extends JPanel implements Runnable {
@@ -12,39 +16,46 @@ private Thread thread;
 	
 	private int FPS = 60;
 	
-	private long targetTime = 1000 / FPS;
+	private long targetTime;
 	
-	public GamePanelRight() {
+	//targetTime = time/FPS;
+	
+	public GamePanelRight(int time) {
 		super();
 		setPreferredSize(new Dimension(game.WIDTH, game.HEIGHT));
 		setFocusable(true);
 		requestFocus();
+		this.targetTime = time/FPS;
 	}
 	private static final long serialVersionUID = 1L;
 
 	final static int platWidth = 200;
 	final static int platLength = 20;
 	
-	final static int plat1_InitX = game.WIDTH-256*6;
-	final static int plat1_InitY = 144*6;
+	final static int x_inc = 288;
+	final static int y_inc = 144;
 	
-	final static int plat2_InitX = game.WIDTH-256*5;
-	final static int plat2_InitY = 144*5;
+	final static int plat1_InitX = game.WIDTH-x_inc*5;
+	final static int plat1_InitY = y_inc*5;
 	
-	final static int plat3_InitX = game.WIDTH-256*4;
-	final static int plat3_InitY = 144*4;
+	final static int plat2_InitX = game.WIDTH-x_inc*4;
+	final static int plat2_InitY = y_inc*4;
 	
-	final static int plat4_InitX = game.WIDTH-256*3;
-	final static int plat4_InitY = 144*3;
+	final static int plat3_InitX = game.WIDTH-x_inc*3;
+	final static int plat3_InitY = y_inc*3;
 	
-	final static int plat5_InitX = game.WIDTH-256*2;
-	final static int plat5_InitY = 144*2;
+	final static int plat4_InitX = game.WIDTH-x_inc*2;
+	final static int plat4_InitY = y_inc*2;
+	
+	final static int plat5_InitX = game.WIDTH-x_inc*1;
+	final static int plat5_InitY = y_inc*1;
 		
-	final static int plat6_InitX = game.WIDTH-256;
-	final static int plat6_InitY = 144;
+	final static int plat6_InitX = game.WIDTH-x_inc*0;
+	final static int plat6_InitY = y_inc*0;
 	
-	final static int plat7_InitX = game.WIDTH;
-	final static int plat7_InitY = 0;
+	final static int plat7_InitX = game.WIDTH-x_inc*-1;
+	final static int plat7_InitY = y_inc*-1;
+	
 		
 	private Platform plat1;
 	private Platform plat2;
@@ -74,7 +85,7 @@ private Thread thread;
 		plat5 = new Platform(plat5_InitX, plat5_InitY, platWidth, platLength);
 		plat6 = new Platform(plat6_InitX, plat6_InitY, platWidth, platLength);
 		plat7 = new Platform(plat7_InitX, plat7_InitY, platWidth, platLength);
-		Vector2D displacement = new Vector2D(-16, 9);
+		Vector2D displacement = new Vector2D(-2, 1);
 		plat1.setDisplacement(displacement);
 		plat2.setDisplacement(displacement);
 		plat3.setDisplacement(displacement);
@@ -127,6 +138,14 @@ private Thread thread;
 	@Override
 	public void paintComponent(Graphics g) {
 			super.paintComponent(g);
+			BufferedImage img = null;
+			try {
+				img = ImageIO.read(new File("/Users/chiriac/Downloads/clear_blue_sky_panorama-wallpaper-1280x720.jpg"));
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			g.drawImage(img, 0, 0, null);
 			if (plat1 != null) {
 				plat1.draw((Graphics2D) g);
 			}

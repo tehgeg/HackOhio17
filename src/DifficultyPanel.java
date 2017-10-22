@@ -29,7 +29,7 @@ public class DifficultyPanel extends JPanel implements ActionListener{
 	public static JButton hard_button = new JButton("Hard");
 		
 	
-	public DifficultyPanel() {
+	public DifficultyPanel(String side) {
 		//Usually done for us
 		super();
 		//Set the dimensions
@@ -38,6 +38,7 @@ public class DifficultyPanel extends JPanel implements ActionListener{
 		setFocusable(true);
 		//Focus on the JPanel
 		requestFocus();
+		this.side = side;
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -78,13 +79,13 @@ public class DifficultyPanel extends JPanel implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			if(e.getSource() == easy_button) {
-				game.changePanelGame(1200);
+				game.changePanelGame(1200, side);
 			}
 			else if(e.getSource() == medium_button) {
-				game.changePanelGame(800);
+				game.changePanelGame(800, side);
 			}
 			else if(e.getSource() == hard_button) {
-				game.changePanelGame(400);
+				game.changePanelGame(400, side);
 			}
 			else {
 				System.out.println("Button Error! Close the game and try again.");

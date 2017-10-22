@@ -31,8 +31,17 @@ public class game extends JPanel{
 		window.setVisible(true);
 	}
 	
-	public static void changePanelGame(int time) {
-		window.setContentPane(new GamePanel(time)); 
+	public static void changePanelGame(int time, String side) {
+		if(side.equals("left")) {
+			window.setContentPane(new GamePanelLeft(time));
+		}
+		else if(side.equals("full")) {
+			window.setContentPane(new GamePanel(time));
+		}
+		else if(side.equals("right")){
+			window.setContentPane(new GamePanelRight(time));
+		}
+		//window.setContentPane(new GamePanel(time)); 
 		window.setLayout(new BorderLayout());
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 		window.setResizable(false);
@@ -40,6 +49,8 @@ public class game extends JPanel{
 		window.setLocationRelativeTo(null); 
 		window.setVisible(true);
 	}
+	
+	
 	
 	public static void changePanelMenu() {
 		window.setContentPane(new MenuPanel()); 
@@ -52,14 +63,14 @@ public class game extends JPanel{
 	}
 	
 	public static void changeDifficulty(String diff) {
-		if(diff.equals("easy")) {
-			window.setContentPane(new DifficultyPanel()); 
+		if(diff.equals("left")) {
+			window.setContentPane(new DifficultyPanel(diff)); 
 		}
-		else if(diff.equals("medium")){
-			window.setContentPane(new DifficultyPanel()); 
+		else if(diff.equals("full")){
+			window.setContentPane(new DifficultyPanel(diff)); 
 		}
-		else if(diff.equals("hard")) {
-			window.setContentPane(new DifficultyPanel()); 
+		else if(diff.equals("right")) {
+			window.setContentPane(new DifficultyPanel(diff)); 
 		}
 		window.setLayout(new BorderLayout());
 		window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
