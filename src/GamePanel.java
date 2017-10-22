@@ -25,26 +25,26 @@ private Thread thread;
 	final static int platWidth = 200;
 	final static int platLength = 20;
 	
-	final static int plat1_InitX = 0;
-	final static int plat1_InitY = 0;
+	final static int plat1_InitX = game.WIDTH-256*6;
+	final static int plat1_InitY = 144*6;
 	
-	final static int plat2_InitX = 256;
-	final static int plat2_InitY = 144;
+	final static int plat2_InitX = game.WIDTH-256*5;
+	final static int plat2_InitY = 144*5;
 	
-	final static int plat3_InitX = 2*plat2_InitX;
-	final static int plat3_InitY = 2*plat2_InitY;
+	final static int plat3_InitX = game.WIDTH-256*4;
+	final static int plat3_InitY = 144*4;
 	
-	final static int plat4_InitX = 3*plat2_InitX;
-	final static int plat4_InitY = 3*plat2_InitY;
+	final static int plat4_InitX = game.WIDTH-256*3;
+	final static int plat4_InitY = 144*3;
 	
-	final static int plat5_InitX = 4*plat2_InitX;
-	final static int plat5_InitY = 4*plat2_InitY;
+	final static int plat5_InitX = game.WIDTH-256*2;
+	final static int plat5_InitY = 144*2;
 		
-	final static int plat6_InitX = 5*plat2_InitX;
-	final static int plat6_InitY = 5*plat2_InitY;
+	final static int plat6_InitX = game.WIDTH-256;
+	final static int plat6_InitY = 144;
 	
-	final static int plat7_InitX = 6*plat2_InitX;
-	final static int plat7_InitY = 6*plat2_InitY;
+	final static int plat7_InitX = game.WIDTH;
+	final static int plat7_InitY = 0;
 		
 	private Platform plat1;
 	private Platform plat2;
@@ -124,6 +124,7 @@ private Thread thread;
 	/*
 	 * Updates game objects.
 	 */
+	@Override
 	public void paintComponent(Graphics g) {
 			super.paintComponent(g);
 			if (plat1 != null) {
