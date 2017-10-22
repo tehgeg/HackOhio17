@@ -14,11 +14,4 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>clear_blue_sky_panorama-wallpaper-1280x720.jpg</name>
-			<type>1</type>
-			<location>/Users/chiriac/Downloads/clear_blue_sky_panorama-wallpaper-1280x720.jpg</location>
-		</link>
-	</linkedResources>
 </projectDescription>
