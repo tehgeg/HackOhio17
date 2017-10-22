@@ -4,11 +4,17 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Scanner;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+
 public class GamePanel extends JPanel implements Runnable {
+	
+	Scanner scan = new Scanner(System.in);
+	
+	private static String userStr;
 	
 	private Thread thread;
 	
@@ -65,7 +71,7 @@ public class GamePanel extends JPanel implements Runnable {
 		setPreferredSize(new Dimension(game.WIDTH, game.HEIGHT));
 		setFocusable(true);
 		requestFocus();
-		this.targetTime = time/FPS;
+		this.targetTime = time/FPS;	
 	}
 	
 	public void addNotify() {
@@ -125,31 +131,60 @@ public class GamePanel extends JPanel implements Runnable {
 	 * Updates the position of the platforms
 	 */
 	public void update() {
+		
 		boolean inc = plat1.updatePos(index, arr);
+		userStr = scan.nextLine();
+		if(userStr.equals(Character.toString(arr[index]))) {
+			Hero.jump = true;
+		}
 		if(inc) {
 			index++;
 		}
 		boolean inc2 = plat2.updatePos(index, arr);
+		userStr = scan.nextLine();
+		if(userStr.equals(Character.toString(arr[index]))) {
+			Hero.jump = true;
+		}
 		if(inc2) {
 			index++;
 		}
 		boolean inc3 = plat3.updatePos(index, arr);
+		userStr = scan.nextLine();
+		if(userStr.equals(Character.toString(arr[index]))) {
+			Hero.jump = true;
+		}
 		if(inc3) {
 			index++;
 		}
 		boolean inc4 = plat4.updatePos(index, arr);
+		userStr = scan.nextLine();
+		if(userStr.equals(Character.toString(arr[index]))) {
+			Hero.jump = true;
+		}
 		if(inc4) {
 			index++;
 		}
 		boolean inc5 = plat5.updatePos(index, arr);
+		userStr = scan.nextLine();
+		if(userStr.equals(Character.toString(arr[index]))) {
+			Hero.jump = true;
+		}
 		if(inc5) {
 			index++;
 		}
 		boolean inc6 = plat6.updatePos(index, arr);
+		userStr = scan.nextLine();
+		if(userStr.equals(Character.toString(arr[index]))) {
+			Hero.jump = true;
+		}
 		if(inc6) {
 			index++;
 		}
 		boolean inc7 = plat7.updatePos(index, arr);
+		userStr = scan.nextLine();
+		if(userStr.equals(Character.toString(arr[index]))) {
+			Hero.jump = true;
+		}
 		if(inc7) {
 			index++;
 		}
