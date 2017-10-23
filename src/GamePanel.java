@@ -1,6 +1,9 @@
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -8,6 +11,7 @@ import java.util.Scanner;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+import javax.swing.event.AncestorListener;
 
 
 public class GamePanel extends JPanel implements Runnable {
@@ -75,6 +79,7 @@ public class GamePanel extends JPanel implements Runnable {
 		setFocusable(true);
 		requestFocus();
 		this.targetTime = time/FPS;	
+		this.listenUp();
 	}
 
 	
@@ -213,6 +218,30 @@ public class GamePanel extends JPanel implements Runnable {
 			if (hero != null) {
 				hero.draw((Graphics2D) g);
 			}
+	}
+	
+	public void listenUp() {
+	this.addKeyListener(new KeyListener(){
+
+		@Override
+		public void keyPressed(KeyEvent e) {
+			
+			
+		}
+
+		@Override
+		public void keyReleased(KeyEvent e) {
+			
+			
+		}
+
+		@Override
+		public void keyTyped(KeyEvent e) {
+			System.out.println(e.getKeyChar());
+				hero.jump = true;
+		}
+		
+	});
 	}
 	
 

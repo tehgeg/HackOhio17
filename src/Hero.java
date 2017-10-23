@@ -13,7 +13,7 @@ public class Hero {
 	private Vector2D displacement;
 	private Vector2D jumpDisplacement = new Vector2D(8,-4);
 	private int jumpTicks = 0;
-	static boolean jump;
+	public static boolean jump;
 	
 	
 	/*
@@ -21,7 +21,7 @@ public class Hero {
 	 */
 	public Hero(int x, int y) {
 		point = new Point(x, y);
-		jump = true;
+		jump = false;
 	}
 	
 	public int getX() {
