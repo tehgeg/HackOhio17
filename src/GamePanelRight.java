@@ -1,14 +1,23 @@
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Scanner;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+import javax.swing.event.AncestorListener;
+
 
 public class GamePanelRight extends JPanel implements Runnable {
+	
+	
+	private static String userStr;
 	
 	private Thread thread;
 	
@@ -47,8 +56,12 @@ public class GamePanelRight extends JPanel implements Runnable {
 	final static int plat7_InitX = game.WIDTH-x_inc*-1;
 	final static int plat7_InitY = y_inc*-1;
 	
+	final static int hero_InitX = plat4_InitX + 70;
+	final static int hero_InitY = plat4_InitY - 92;
+	
 	
 	char[] arr = RandomChars.generateRight(1000000);
+	private static int charIndex = 0;
 	private static int index = 3;
 
 	private Platform plat1;
@@ -58,6 +71,7 @@ public class GamePanelRight extends JPanel implements Runnable {
 	private Platform plat5;
 	private Platform plat6;
 	private Platform plat7;
+	private Hero hero;
 
 	
 	public GamePanelRight(int time) {
@@ -65,8 +79,10 @@ public class GamePanelRight extends JPanel implements Runnable {
 		setPreferredSize(new Dimension(game.WIDTH, game.HEIGHT));
 		setFocusable(true);
 		requestFocus();
-		this.targetTime = time/FPS;
+		this.targetTime = time/FPS;	
+		this.listenUp();
 	}
+
 	
 	public void addNotify() {
 		super.addNotify();
@@ -85,9 +101,11 @@ public class GamePanelRight extends JPanel implements Runnable {
 		plat2 = new Platform(plat2_InitX, plat2_InitY, platWidth, platLength, "");
 		plat3 = new Platform(plat3_InitX, plat3_InitY, platWidth, platLength, "");
 		plat4 = new Platform(plat4_InitX, plat4_InitY, platWidth, platLength, "");
-		plat5 = new Platform(plat5_InitX, plat5_InitY, platWidth, platLength, Character.toString(arr[2]));
+		plat5 = new Platform(plat5_InitX, plat5_InitY, platWidth, platLength, Character.toString(arr[0]));
 		plat6 = new Platform(plat6_InitX, plat6_InitY, platWidth, platLength, Character.toString(arr[1]));
-		plat7 = new Platform(plat7_InitX, plat7_InitY, platWidth, platLength, Character.toString(arr[0]));
+		plat7 = new Platform(plat7_InitX, plat7_InitY, platWidth, platLength, Character.toString(arr[2]));
+		hero = new Hero(hero_InitX, hero_InitY);
+		
 		Vector2D displacement = new Vector2D(-2, 1);
 
 		plat1.setDisplacement(displacement);
@@ -97,6 +115,7 @@ public class GamePanelRight extends JPanel implements Runnable {
 		plat5.setDisplacement(displacement);
 		plat6.setDisplacement(displacement);
 		plat7.setDisplacement(displacement);
+		hero.setDisplacement(displacement);
 	}
 
 
@@ -125,6 +144,7 @@ public class GamePanelRight extends JPanel implements Runnable {
 	 * Updates the position of the platforms
 	 */
 	public void update() {
+		
 		boolean inc = plat1.updatePos(index, arr);
 		if(inc) {
 			index++;
@@ -152,6 +172,10 @@ public class GamePanelRight extends JPanel implements Runnable {
 		boolean inc7 = plat7.updatePos(index, arr);
 		if(inc7) {
 			index++;
+		}
+		boolean heroBool = hero.updatePos();
+		if (heroBool) {
+			System.out.print("GAME OVER");
 		}
 	}
 
@@ -192,6 +216,36 @@ public class GamePanelRight extends JPanel implements Runnable {
 			if (plat7 != null) {
 				plat7.draw((Graphics2D) g);
 			}
+			if (hero != null) {
+				hero.draw((Graphics2D) g);
+			}
+	}
+	
+	public void listenUp() {
+	this.addKeyListener(new KeyListener(){
+
+		@Override
+		public void keyPressed(KeyEvent e) {
+			
+			
+		}
+
+		@Override
+		public void keyReleased(KeyEvent e) {
+			
+			
+		}
+
+		@Override
+		public void keyTyped(KeyEvent e) {
+				if(e.getKeyChar() == arr[charIndex]) {
+					Hero.jump = true;
+					charIndex++;
+				}
+		}
+		
+	});
+	this.setFocusable(true);
 	}
 	
 
