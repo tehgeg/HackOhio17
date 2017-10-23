@@ -9,6 +9,7 @@ import javax.imageio.ImageIO;
 public class Hero {
 
 	private Point point;
+	private String gameMode;
 	
 	private Vector2D displacement;
 	private Vector2D jumpDisplacement = new Vector2D(8,-4);
@@ -19,9 +20,10 @@ public class Hero {
 	/*
 	 * Constructor for the hero object
 	 */
-	public Hero(int x, int y) {
+	public Hero(int x, int y, String mode) {
 		point = new Point(x, y);
 		jump = false;
+		gameMode = mode;
 	}
 	
 	public int getX() {
@@ -64,6 +66,13 @@ public class Hero {
 			if (jumpTicks == 36) {
 				jumpTicks = 0;
 				jump = false;
+				if(gameMode.equals("Full")) {
+					GamePanel.charIndex++;
+				} else if(gameMode.equals("Left")) {
+					GamePanelLeft.charIndex++;
+				} else {
+					GamePanelRight.charIndex++;
+				}		
 			}
 		}
 		return offScreen;
@@ -86,7 +95,6 @@ public class Hero {
 				e.printStackTrace();
 		}
 			g.drawImage(img, getX(), getY(), null);
-	}
-	
+		}
 	}
 }

@@ -15,18 +15,18 @@ import javax.swing.event.AncestorListener;
 
 
 public class GamePanelRight extends JPanel implements Runnable {
-	
-	
+
+
 	private static String userStr;
-	
+
 	private Thread thread;
-	
+
 	private boolean running;
-	
+
 	private int FPS = 60;
-	
+
 	private long targetTime;
-	
+
 	private static final long serialVersionUID = 1L;
 
 	final static int platWidth = 200;
@@ -37,31 +37,31 @@ public class GamePanelRight extends JPanel implements Runnable {
 	final static int plat1_InitX = game.WIDTH-x_inc*5;
 	final static int plat1_InitY = y_inc*5;
 
-	
+
 	final static int plat2_InitX = game.WIDTH-x_inc*4;
 	final static int plat2_InitY = y_inc*4;
-	
+
 	final static int plat3_InitX = game.WIDTH-x_inc*3;
 	final static int plat3_InitY = y_inc*3;
-	
+
 	final static int plat4_InitX = game.WIDTH-x_inc*2;
 	final static int plat4_InitY = y_inc*2;
-	
+
 	final static int plat5_InitX = game.WIDTH-x_inc*1;
 	final static int plat5_InitY = y_inc*1;
-		
+
 	final static int plat6_InitX = game.WIDTH-x_inc*0;
 	final static int plat6_InitY = y_inc*0;
-	
+
 	final static int plat7_InitX = game.WIDTH-x_inc*-1;
 	final static int plat7_InitY = y_inc*-1;
-	
+
 	final static int hero_InitX = plat4_InitX + 70;
 	final static int hero_InitY = plat4_InitY - 92;
-	
-	
+
+
 	char[] arr = RandomChars.generateRight(1000000);
-	private static int charIndex = 0;
+	public static int charIndex = 0;
 	private static int index = 3;
 
 	private Platform plat1;
@@ -73,7 +73,7 @@ public class GamePanelRight extends JPanel implements Runnable {
 	private Platform plat7;
 	private Hero hero;
 
-	
+
 	public GamePanelRight(int time) {
 		super();
 		setPreferredSize(new Dimension(game.WIDTH, game.HEIGHT));
@@ -83,18 +83,18 @@ public class GamePanelRight extends JPanel implements Runnable {
 		this.listenUp();
 	}
 
-	
+
 	public void addNotify() {
 		super.addNotify();
 		if (thread == null) {
-		thread = new Thread(this);
-		thread.start();
+			thread = new Thread(this);
+			thread.start();
 		}
 		running = true;
 	}
-	
-	
-	
+
+
+
 	public void init() {
 
 		plat1 = new Platform(plat1_InitX, plat1_InitY, platWidth, platLength, "");
@@ -104,8 +104,8 @@ public class GamePanelRight extends JPanel implements Runnable {
 		plat5 = new Platform(plat5_InitX, plat5_InitY, platWidth, platLength, Character.toString(arr[0]));
 		plat6 = new Platform(plat6_InitX, plat6_InitY, platWidth, platLength, Character.toString(arr[1]));
 		plat7 = new Platform(plat7_InitX, plat7_InitY, platWidth, platLength, Character.toString(arr[2]));
-		hero = new Hero(hero_InitX, hero_InitY);
-		
+		hero = new Hero(hero_InitX, hero_InitY, "Right");
+
 		Vector2D displacement = new Vector2D(-2, 1);
 
 		plat1.setDisplacement(displacement);
@@ -119,7 +119,7 @@ public class GamePanelRight extends JPanel implements Runnable {
 	}
 
 
-	
+
 	@Override
 	public void run() {
 		init();
@@ -134,17 +134,17 @@ public class GamePanelRight extends JPanel implements Runnable {
 			if (wait < 0 ) wait = 5;
 			try {
 				Thread.sleep(wait);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				repaint();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			repaint();
 		}
 	}	
 	/*
 	 * Updates the position of the platforms
 	 */
 	public void update() {
-		
+
 		boolean inc = plat1.updatePos(index, arr);
 		if(inc) {
 			index++;
@@ -186,68 +186,67 @@ public class GamePanelRight extends JPanel implements Runnable {
 	 */
 	@Override
 	public void paintComponent(Graphics g) {
-			super.paintComponent(g);
-			BufferedImage img = null;
-			try {
-				img = ImageIO.read(new File("src/images/clear_blue_sky_panorama-wallpaper-1280x720.jpg"));
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			g.drawImage(img, 0, 0, null);
-			if (plat1 != null) {
-				plat1.draw((Graphics2D) g);
-			}
-			if (plat2 != null) {
-				plat2.draw((Graphics2D) g);
-			}
-			if (plat3 != null) {
-				plat3.draw((Graphics2D) g);
-			}
-			if (plat4 != null) {
-				plat4.draw((Graphics2D) g);
-			}
-			if (plat5 != null) {
-				plat5.draw((Graphics2D) g);
-			}
-			if (plat6 != null) {
-				plat6.draw((Graphics2D) g);
-			}
-			if (plat7 != null) {
-				plat7.draw((Graphics2D) g);
-			}
-			if (hero != null) {
-				hero.draw((Graphics2D) g);
-			}
+		super.paintComponent(g);
+		BufferedImage img = null;
+		try {
+			img = ImageIO.read(new File("src/images/clear_blue_sky_panorama-wallpaper-1280x720.jpg"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		g.drawImage(img, 0, 0, null);
+		if (plat1 != null) {
+			plat1.draw((Graphics2D) g);
+		}
+		if (plat2 != null) {
+			plat2.draw((Graphics2D) g);
+		}
+		if (plat3 != null) {
+			plat3.draw((Graphics2D) g);
+		}
+		if (plat4 != null) {
+			plat4.draw((Graphics2D) g);
+		}
+		if (plat5 != null) {
+			plat5.draw((Graphics2D) g);
+		}
+		if (plat6 != null) {
+			plat6.draw((Graphics2D) g);
+		}
+		if (plat7 != null) {
+			plat7.draw((Graphics2D) g);
+		}
+		if (hero != null) {
+			hero.draw((Graphics2D) g);
+		}
 	}
-	
+
 	public void listenUp() {
-	this.addKeyListener(new KeyListener(){
+		this.addKeyListener(new KeyListener(){
 
-		@Override
-		public void keyPressed(KeyEvent e) {
-			
-			
-		}
+			@Override
+			public void keyPressed(KeyEvent e) {
 
-		@Override
-		public void keyReleased(KeyEvent e) {
-			
-			
-		}
 
-		@Override
-		public void keyTyped(KeyEvent e) {
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+
+
+			}
+
+			@Override
+			public void keyTyped(KeyEvent e) {
 				if(e.getKeyChar() == arr[charIndex]) {
 					Hero.jump = true;
-					charIndex++;
 				}
-		}
-		
-	});
-	this.setFocusable(true);
+			}
+
+		});
+		this.setFocusable(true);
 	}
-	
+
 
 }
 
